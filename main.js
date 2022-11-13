@@ -1,24 +1,27 @@
 
-let filterCoffees = [];
+let saveRoast = localStorage.getItem("roast");
+let saveInput = localStorage.getItem("input");
+
 let roastSelect = document.getElementById("roast-selection");
 let input = document.getElementById("searchCoffee");
+input.value = saveInput;
+roastSelect.value = saveRoast; 
 
 let searchBtn = document.getElementById("search-btn");
 let container = document.getElementById("coffee-list");
 
-window.addEventListener("load",()=>{    
-    if (localStorage.getItem("input") !== "" && localStorage.getItem("input") !== null ){
-        input.value = localStorage.getItem("input");
-        console.log("input.value: ",input.value);
-    }
-    // if (localStorage.getItem("saveCoffees") !== "" &&
-    //  localStorage.getItem("saveCoffees") != null){
-
-    //     filterCoffees = JSON.parse(localStorage.getItem("saveCoffees"));
-
-    // }
-    renderInContainer(input);
+window.addEventListener("load", () => { 
+   renderInContainer(saveInput,saveRoast)
 });
+input.addEventListener("keyup", () => {
+    renderInContainer(input.value, roastSelect.value);
+    localStorage.setItem("input", input.value);
+});
+roastSelect.addEventListener("change", (event) => {
+    container.innerHTML = renderCoffees(matchedArray(input.value, roastSelect.value));
+    localStorage.setItem("roast", roastSelect.value);
+})
+
 
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
@@ -39,56 +42,64 @@ var coffees = [
     { id: 14, name: 'French', roast: 'dark', image: "" },
 ];
 
-function matchedArray(typed) {
-    filterCoffees = [];
-    coffees.forEach((cup)=>{
-        if (cup.roast.toLowerCase() == 
-        roastSelect.value.toLowerCase()){
-            filterCoffees.push(cup);
-        }
-    })
+function matchedArray(typed, roast) {
+    let filterCoffees = [];
 
-    
-    console.log("Roast: ", roastSelect.value);
-    
-    if (roastSelect.value === "All"){
 
-        coffees.forEach((drink) => {
-            let name = drink.name.toUpperCase();
-            let roast = drink.roast.toUpperCase();
-            
-            if (typed == null || typed == "") {
-                filterCoffees = [];
-            } else {
-                
-                if (name.includes(typed.toUpperCase()) ||
-                roast.includes(typed.toUpperCase())) {
-                    filterCoffees.push(drink);
-                }
-                
-            }
-            
-        });
-        
+    switch (roast) {
+        case "Light":
+            filterCoffees = coffees.filter(coffee => {
+                return coffee.roast.toLowerCase() == roast.toLowerCase();
+            });
+            console.log('Light arr', filterCoffees);
+
+            break;
+        case "Medium":
+            filterCoffees = coffees.filter(coffee => {
+                return coffee.roast.toLowerCase() == roast.toLowerCase();
+            });
+            console.log('Medium arr', filterCoffees);
+
+            break;
+        case "Dark":
+            filterCoffees = coffees.filter(coffee => {
+                return coffee.roast.toLowerCase() == roast.toLowerCase();
+            });
+            console.log('Dark arr', filterCoffees);
+
+            break;
+        default:
+            filterCoffees = coffees;
+            console.log("All arr", filterCoffees);
     }
-   
-    // localStorage.setItem("saveCoffees", JSON.stringify(filterCoffees));
-    console.log("filterCoffees: ",filterCoffees);
 
+
+    if (typed != null && typed != "") {
+
+        let newArr = filterCoffees.filter(coffee => {
+
+            let name = coffee.name.toUpperCase();
+            let rst = coffee.roast.toUpperCase();
+            typed = typed.toUpperCase();
+
+            return name.includes(typed) || rst.includes(typed);
+
+        });
+        return newArr;
+    }
+
+
+
+
+
+    // localStorage.setItem("filterCoffees",JSON.stringify(filterCoffees))
     return filterCoffees;
 }
 
-function renderInContainer(input){
-    container.innerHTML = renderCoffees(matchedArray(input.value));
-    localStorage.setItem("input", input.value);
+function renderInContainer(input, roast) {
+    container.innerHTML = renderCoffees(matchedArray(input, roast));
 }
 
-input.addEventListener("keyup",()=>{
-    renderInContainer(input);
-});
-roastSelect.addEventListener("change", (event) => {
-    container.innerHTML = renderCoffees(matchedArray(event.target.value));
-})
 
 
 
