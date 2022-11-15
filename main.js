@@ -22,15 +22,37 @@
     window.addEventListener("load", () => {
         renderInContainer(saveInput, saveRoast)
     });
-    input.addEventListener("keyup", () => {
-        renderInContainer(input.value, roastSelect.value);
-        localStorage.setItem("input", input.value);
-    });
+
     roastSelect.addEventListener("change", (event) => {
         container.innerHTML = renderCoffees(matchedArray(input.value, roastSelect.value));
         localStorage.setItem("roast", roastSelect.value);
     })
+
+    input.addEventListener("keyup", () => {
+        renderInContainer(input.value, roastSelect.value);
+        localStorage.setItem("input", input.value);
+    });
+
+    let form = document.getElementById("addItems");
+
+    form.addEventListener("submit",(event)=>{
+        
+        
+        event.preventDefault();
+        localStorage.setItem("userRoast", event.target[0].value);
+        localStorage.setItem("userCoffee", event.target[1].value);
     
+        createCoffee( event.target[1].value, event.target[0].value);
+    })
+    
+    
+    function titleCase(str) {
+        let splitStr = str.toLowerCase().split(' ');
+        for (let i = 0; i < splitStr.length; i++) {
+            splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+        }
+        return splitStr.join(' ');
+    }
     function renderInContainer(input, roast) {
         container.innerHTML = renderCoffees(matchedArray(input, roast));
     }
@@ -38,6 +60,10 @@
     function renderCoffees(coffees) {
         var html = '';
         for (var i = 0; i < coffees.length; i++) {
+            coffees[i].name = titleCase(coffees[i].name);
+            coffees[i].roast = titleCase(coffees[i].roast);
+
+            // Todo Capitalize Data title Case
             html += renderCoffee(coffees[i]);
         }
         return html;
@@ -46,13 +72,9 @@
     function renderCoffee(coffee) {
         var html = `<div class="coffee-cont">`;
         // html += `<td> + coffee.id + </td>`;
-        html += `<figure class="img-cont" style="
-        width: 300px;
-        height:300px;
+        html += `<figure class="img-cont coffee" style="
         background-image: url(${coffee.image});
-        background-size: cover;
-        background-repeat: no-repeat;
-        " ></figure>`;
+        "></figure>`;
         html += `<p class="coffee-name">${coffee.name}</p>`;
         html += `<p class="roast">${coffee.roast}</p>`;
         html += `</div>`;
@@ -82,13 +104,9 @@
     ];
         if (userCoffee !== null && userRoast !== null){
             coffees = JSON.parse(localStorage.getItem("newCoffees"));
-            console.log("lc: ",localStorage.getItem("newCoffees"));
-            console.log('json arr', JSON.parse(localStorage.getItem("newCoffees")));
-            
-            
         }
     
-    
+        
     
         function createCoffee(c , r){
     
@@ -155,14 +173,6 @@
         return filterCoffees;
     }
     
-    let form = document.getElementById("addItems");
-    form.addEventListener("submit",(event)=>{
-        event.preventDefault();
-        localStorage.setItem("userRoast", event.target[0].value);
-        localStorage.setItem("userCoffee", event.target[1].value);
-    
-        createCoffee( event.target[1].value, event.target[0].value);
-    })
     
     
 
