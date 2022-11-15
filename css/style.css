@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap');
+
+
+:root{
+    --header-font: 4rem;
+    --ol: dashed red;
+    --fprime: 'Dancing Script', cursive;
+    font-family: 'Teko', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    /* background-color: #faedcd !important; */
+    background: hsla(30, 53%, 64%, 1);
+    background: linear-gradient(225deg, hsla(30, 53%, 64%, 1) 0%, hsla(43, 82%, 89%, 1) 100%);
+    background: -moz-linear-gradient(225deg, hsla(30, 53%, 64%, 1) 0%, hsla(43, 82%, 89%, 1) 100%);
+    background: -webkit-linear-gradient(225deg, hsla(30, 53%, 64%, 1) 0%, hsla(43, 82%, 89%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D4A373", endColorstr="#FAEDCD", GradientType=1 );
+}
+header {
+    padding: 0rem 2rem;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#search-results {
+    line-height: 6rem !important;
+    font-size: 2rem;
+    text-align: center;
+}
+.ol{
+    outline: dashed red;
+}
+.icon {
+    font-size: 3rem;
+}
+.circle {
+    position: absolute;
+    top: 300px;
+    left: 300px;
+    width: 200px;
+    height: 200px;
+    filter: blur(10px);
+    background-color:#8f6133 ;
+    border-radius: 50%;
+    z-index: -100;
+}
+
+#coffee-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 2rem;
+    align-items: center;
+    height: 500px;
+    overflow-y: scroll;
+}
+.coffee {
+    width: 300px;
+    height:300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.coffee-cont {
+    overflow-y: hidden;
+    line-height: 2.5rem;
+    width: 300px;
+    height: 300px;
+    /* background-color: #c93737; */
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* outline: red dashed; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-family: var(--fprime);
+    font-size: 1.4rem;
+    background: hsla(52, 94%, 21%, 1);
+    background: linear-gradient(90deg, hsla(52, 94%, 21%, 1) 0%, hsla(56, 21%, 52%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(52, 94%, 21%, 1) 0%, hsla(56, 21%, 52%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(52, 94%, 21%, 1) 0%, hsla(56, 21%, 52%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#665803", endColorstr="#9E9B6B", GradientType=1 );
+    transition: all .1s ease;
+}
+div.coffee-cont:hover{
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+.coffee-name,.roast {
+    display: inline-block;
+    height: fit-content;
+}
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++ */
+  /*cup*/
+  .cup{
+    height: 40px;
+    cursor: pointer;
+    width: 35px;
+    border: 2px solid #030303;
+    transform: translate(-14%, -6%);
+    border-radius: 20px 20px 60px 60px;
+    background: #4F311C;
+  }
+  /*handle*/
+  .cup:before{
+    cursor: pointer;
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 5px;
+    border: 10px solid #030303;
+    border-left: none;
+    right: -15px;
+    top: 2px;
+    border-radius: 0 30px 80px 0;
+
+  }
+
+  /*plate*/
+  .cup:after{
+    content: ""  ;
+    position: absolute;
+    height: 3px;
+    width: 50px;
+    background-color: #030303;
+    left: -10px;
+    bottom: -5px;
+    border-radius: 10px;
+
+
+  }
+.bubble{
+  height: 5px;
+  width: 5px;
+  background-color: #fbbe08;
+  border-radius: 50%;
+  position: absolute;
+  animation: bubbles forwards infinite;
+  opacity: 0.6;
+}
+
+@keyframes bubbles {
+  100% {
+  transform: translateY(-75px);
+    opacity: 0;
+  }
+}
+
+  .bubble-1 {
+    left: 5px;
+    bottom: 5px;
+    animation-delay: 0.5s;
+    animation-duration: 3s;
+  }
+
+  .bubble-2 {
+    left: 20px;
+    bottom: 35px;
+    animation-delay: 1.2s;
+    animation-duration: 4s;
+  }
+
+  .bubble-3 {
+    left: 35px;
+    bottom: 30px;
+    animation-duration: 3s;
+  }
+/* +++++++++++++++++++++++++++++++++++++ */
+
+
+
+
+
+/* xsm */
+/* @media screen and (max-width:576px) {
+    .parent {
+        flex-direction: row;
+        outline: dashed red !important;
+        display: flex;
+        background-color: black;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .forms-cont {
+        width: 100%;
+        background-color: beige;
+    }
+} */
+/* sm  */
+/* @media screen and (max-width:768px ) {
+    .parent {
+        flex-direction: column !important;    
+    }
+} */
+/* md */
+/* @media screen and (max-width:992px ) {
+    .parent {
+        flex-direction: column-reverse;
+    }
+} */
+/* lg */
+/* @media screen and (max-width:1200px ) {
+    .parent {
+        flex-direction: column-reverse;
+    }
+} */
+/* xl */
+/* @media screen and (max-width:1400px ) {
+    .parent {
+        flex-direction: column-reverse;
+    }
+} */
+/* xxl */
+/* @media screen and (min-width:1400px ) {
+    .parent {
+        flex-direction: column-reverse;
+    }
+} */
+
+/* +++++++++++++++++++ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
