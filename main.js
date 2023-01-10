@@ -9,10 +9,9 @@
     let userRoast = localStorage.getItem("userRoast");
     
     
-    
-    
     let roastSelect = document.getElementById("roast-selection");
     let input = document.getElementById("searchCoffee");
+    
     input.value = saveInput;
     roastSelect.value = saveRoast;
     
@@ -53,6 +52,7 @@
         }
         return splitStr.join(' ');
     }
+
     function renderInContainer(input, roast) {
         container.innerHTML = renderCoffees(matchedArray(input, roast));
     }
@@ -64,12 +64,12 @@
             coffees[i].roast = titleCase(coffees[i].roast);
 
             // Todo Capitalize Data title Case
-            html += renderCoffee(coffees[i]);
+            html += renderHtml(coffees[i]);
         }
         return html;
     }
     
-    function renderCoffee(coffee) {
+    function renderHtml(coffee) {
         var html = `<div class="coffee-cont">`;
         // html += `<td> + coffee.id + </td>`;
         html += `<figure class="img-cont coffee" style="
@@ -110,7 +110,7 @@
     
         function createCoffee(c , r){
     
-            if (r != "" && c != ""){
+            if (r != null && c != null){
                 coffees.push({
                     id: coffees[coffees.length-1].id++,
                     name: c,
@@ -134,19 +134,16 @@
                 filterCoffees = coffees.filter(coffee => {
                     return coffee.roast.toLowerCase() == roast.toLowerCase();
                 });
-    
                 break;
             case "Medium":
                 filterCoffees = coffees.filter(coffee => {
                     return coffee.roast.toLowerCase() == roast.toLowerCase();
                 });
-    
                 break;
             case "Dark":
                 filterCoffees = coffees.filter(coffee => {
                     return coffee.roast.toLowerCase() == roast.toLowerCase();
                 });
-    
                 break;
             default:
                 filterCoffees = coffees;

@@ -11,7 +11,6 @@
 
 body{
     min-height: 100vh;
-    /* background-color: #faedcd !important; */
     background: hsla(30, 53%, 64%, 1);
     background: linear-gradient(225deg, hsla(30, 53%, 64%, 1) 0%, hsla(43, 82%, 89%, 1) 100%);
     background: -moz-linear-gradient(225deg, hsla(30, 53%, 64%, 1) 0%, hsla(43, 82%, 89%, 1) 100%);
@@ -32,20 +31,6 @@ header {
 }
 .ol{
     outline: dashed red;
-}
-.icon {
-    font-size: 3rem;
-}
-.circle {
-    position: absolute;
-    top: 300px;
-    left: 300px;
-    width: 200px;
-    height: 200px;
-    filter: blur(10px);
-    background-color:#8f6133 ;
-    border-radius: 50%;
-    z-index: -100;
 }
 
 #coffee-list {
@@ -71,10 +56,8 @@ div.coffee-cont {
     line-height: 2.5rem;
     width: 300px;
     height: 300px;
-    /* background-color: #c93737; */
     border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    /* outline: red dashed; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -105,7 +88,7 @@ div.coffee-cont:hover{
 }
 
 
-/* +++++++++++++++++++++++++++++++++++++ */
+/* ++++++++ Cup +++++++++++++++++++++++++++++ */
   /*cup*/
   .cup{
     height: 40px;
@@ -181,68 +164,6 @@ div.coffee-cont:hover{
     animation-duration: 3s;
   }
 /* +++++++++++++++++++++++++++++++++++++ */
-
-
-
-
-
-/* xsm */
-/* @media screen and (max-width:576px) {
-    .parent {
-        flex-direction: row;
-        outline: dashed red !important;
-        display: flex;
-        background-color: black;
-        justify-content: center;
-        align-items: center;
-
-    }
-    .forms-cont {
-        width: 100%;
-        background-color: beige;
-    }
-} */
-/* sm  */
-/* @media screen and (max-width:768px ) {
-    .parent {
-        flex-direction: column !important;    
-    }
-} */
-/* md */
-/* @media screen and (max-width:992px ) {
-    .parent {
-        flex-direction: column-reverse;
-    }
-} */
-/* lg */
-/* @media screen and (max-width:1200px ) {
-    .parent {
-        flex-direction: column-reverse;
-    }
-} */
-/* xl */
-/* @media screen and (max-width:1400px ) {
-    .parent {
-        flex-direction: column-reverse;
-    }
-} */
-/* xxl */
-/* @media screen and (min-width:1400px ) {
-    .parent {
-        flex-direction: column-reverse;
-    }
-} */
-
-/* +++++++++++++++++++ */
-
-
-
-
-
-
-
-
-
 
 
 
